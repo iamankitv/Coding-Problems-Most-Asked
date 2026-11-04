@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +11,26 @@ namespace Coding_Problems_Most_Asked
     {
         /// String reverse
         /// 
+
+
+        public static string ReverseByTwoPointer(string str) {
+            char[] chars=str.ToCharArray();
+            int left = 0, right = str.Length - 1;
+            while (left < right)
+            {
+                //char temp = chars[left];
+
+                //chars[left] = chars[right];
+
+                //chars[right] = temp;
+                (chars[left], chars[right]) =    (chars[right], chars[left]);
+                left++;
+                right--;
+            }
+            return new string(chars);
+
+            
+        }
 
         public static string ReverseString(string str)
         {

@@ -12,7 +12,7 @@ public class Program
         DSA_Problems dsa = new DSA_Problems();
         string stringForReverse = "ankit";
         Console.WriteLine("---------------------");
-        Console.WriteLine(String_Problems.ReverseString(stringForReverse));
+        Console.WriteLine(String_Problems.ReverseByTwoPointer(stringForReverse));
         Console.WriteLine("---------------------");
         Console.WriteLine(String_Problems.ReverseString2(stringForReverse));
 
