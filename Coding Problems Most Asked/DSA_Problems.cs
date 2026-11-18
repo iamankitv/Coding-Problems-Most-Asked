@@ -719,5 +719,34 @@ namespace Coding_Problems_Most_Asked
 
             return count;
         }
+
+        /// <summary>
+        /// move the zero to the end of the array
+        /// input: [0, 9, 0, -3, 0, 5]
+        /// output: [9, -3, 5, 0, 0, 0]
+        /// we use two pointer approach to solve this problem
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public static int[] MoveZero(int[] nums) {
+            //int[] arr = [0, 9, 0, -3, 0, 5];
+
+            int j = 0; // Pointer for the next non-zero element
+
+            for (int i = 0; i < nums.Length; i++) {
+
+                if (nums[i] != 0)
+                {
+                    //swap arr[i] and arr[j]
+                    (nums[i], nums[j])=(nums[j], nums[i]); // swap using tuple assignment
+                    j++; // Move the pointer for the next non-zero element
+                }
+
+            }
+
+
+            return nums;
+        }
+
     }
 }

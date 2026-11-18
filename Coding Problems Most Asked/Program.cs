@@ -168,23 +168,26 @@ public class Program
         Console.WriteLine(" ");
         Console.WriteLine("----------total number of continuous subarrays whose sum equals k-by dictionary----------");
         int sumSubArr = DSA_Problems.SubarraySumByHashDictionary(arrSubarr, 3);
-        Console.WriteLine(sumSubArr);
+        Console.WriteLine(string.Join("", sumSubArr));
 
         Console.WriteLine(" ");
         Console.WriteLine("----------total number of continuous subarrays whose sum equals k---by sliding window--------");
         sumSubArr = DSA_Problems.SubarraySumBySlidingWin(arrSubarr, 3);
-        Console.WriteLine(sumSubArr);
+        Console.WriteLine(string.Join("", sumSubArr));
 
         Console.WriteLine(" ");
         Console.WriteLine("----------total number of continuous subarrays whose sum equals k-----by brute force------");
         sumSubArr = DSA_Problems.SubarraySumByBruteForce(arrSubarr, 3);
-        Console.WriteLine(sumSubArr);
+        Console.WriteLine(string.Join("",sumSubArr));
 
+        Console.WriteLine("-------Move zero problem by Two pointer---------");
+        int[] arrMoveZero= DSA_Problems.MoveZero([0, 9, 0, -3, 0, 5]);
+        Console.WriteLine(string.Join(" ", arrMoveZero));
 
-
-
-
-
+        Console.WriteLine("-------Flatten the nested array---------");
+        string input = "[1,[2,[3,4]]]";
+        int[] result =FlattenArray(input);
+        Console.WriteLine("[" + string.Join(",", result) + "]");
         Console.ReadKey();
     }
     
@@ -458,4 +461,56 @@ public class Program
     }
 
 
+    /// <summary>
+    ///  input: "[1, 2, [3, 4], 5]", output: [1, 2, 3, 4, 5]
+    ///  we can use recursion to flatten the array. The idea is to iterate through the input string 
+    ///  and whenever we encounter a nested array (indicated by '['), we recursively call the function to 
+    ///  flatten that nested array. When we encounter a number, we add it to the result list.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="result"></param>
+    public static int[] FlattenArray(string input)
+    {
+        List<int> result = new List<int>();
+
+        int i = 0;
+
+        while (i < input.Length)
+        {
+            if (input[i] == '[')
+            {
+                int start = ++i;
+                int count = 1;
+
+                while (i < input.Length && count > 0)
+                {
+                    if (input[i] == '[') count++;
+                    else if (input[i] == ']') count--;
+
+                    i++;
+                }
+
+                string nested = input.Substring(start, i - start - 1);
+
+                result.AddRange(FlattenArray(nested));
+            }
+            else if (char.IsDigit(input[i]) || input[i] == '-')
+            {
+                int start = i;
+
+                if (input[i] == '-') i++;
+
+                while (i < input.Length && char.IsDigit(input[i]))
+                    i++;
+
+                result.Add(int.Parse(input.Substring(start, i - start)));
+            }
+            else
+            {
+                i++;
+            }
+        }
+
+        return result.ToArray();
+    }
 }
