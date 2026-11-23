@@ -33,7 +33,7 @@ public class Program
         Console.WriteLine("---------------------");
 
         Console.WriteLine(String_Problems.stringAllSubstring("abcd"));
-        Console.WriteLine("---------------------");
+        Console.WriteLine("--------stringAllSubstring-------------");
 
 
         int[] arr = [1, 2, 3, 4, 5];
@@ -188,6 +188,14 @@ public class Program
         string input = "[1,[2,[3,4]]]";
         int[] result =FlattenArray(input);
         Console.WriteLine("[" + string.Join(",", result) + "]");
+
+        Console.WriteLine("-------FindMedianSortedArrays---------");
+        int[] num1 = [0,0];
+        int[] num2 = [0,0];
+
+        double median=DSA_Problems.FindMedianSortedArrays(num1, num2);
+        Console.WriteLine(median.ToString());
+
         Console.ReadKey();
     }
     

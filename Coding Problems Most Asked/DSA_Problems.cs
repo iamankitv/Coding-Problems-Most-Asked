@@ -748,5 +748,31 @@ namespace Coding_Problems_Most_Asked
             return nums;
         }
 
+        /// <summary> 
+        /// input num1 =[1,2] and num2=[3,4] output= 2.5
+        /// </summary> 
+
+        public static double FindMedianSortedArrays(int[] nums1, int[] nums2)
+        {
+
+            int m = nums1.Length;
+            int n = nums2.Length;
+            int sum_length = m + n;
+            double median = 0;
+            int [] num3 = nums1.Concat(nums2).ToArray();
+            if (sum_length % 2 == 0)
+            {
+                double n1 = num3[(sum_length / 2)];
+                double n2 = num3[(sum_length / 2 - 1)];
+                median = ( n1+ n2) / 2;
+            }
+            else
+            {
+                int index = Convert.ToInt32((sum_length + 1) / 2);
+                median = num3[index];
+            }
+            return median;
+        }
+
     }
 }
